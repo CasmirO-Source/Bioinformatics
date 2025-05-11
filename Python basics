@@ -1,0 +1,38 @@
+import random
+print("WELCOME TO THE GREATEST GUESSING GAME OF ALL TIME")
+print("FIRST LET ME EXPLAIN THE RULES YOUNG KING/QUEEN")
+print("RULE NO.1, A PLAYER'S GUESS HAS TO BE IN THE RANGE OF 1-100 ELSE SEE THE DEVASTATING OUT OF BOUNDS MESSAGE")
+print("RULE NO.2, IF A PLAYER'S GUESS IS 10 OR LESS NUMBERS AWAY FROM THE NUMBER, THEY SHALL RECEIVE A WARM MESSAGE")
+print("VICE VERSA, THEY WILL RECEIVE A MELANCHOLY COLD MESSAGE")
+print("IF A PLAYER'S NEXT GUESS IS LESS THAN 10 AWAY, THEY WILL RECEIVE A WARMER MESSAGE OR VICE VERSA A COLD MESSAGE")
+print("AND FINALLY, IF A PLAYER GUESSES CORRECTLY, THEY MAY RECEIVE 1 MILLION POUNDS < in installments >")
+print("ARE YOU READY?!?!")
+print("LETS GOOOO!!!")
+
+guesses = []
+y = random.randint(1,100)
+while True:
+    try:
+        guess = int(input("Enter your guess here(1-100): "))
+    except ValueError:
+        print("Please enter a number")
+        continue
+    guesses.append(guess)
+    if guess < 1 or guess>100:
+        print("OUT OF BOUNDS")
+        continue
+    if guess == y:
+        print(f"Congratulations BADMAN. You guessed it in {len(guesses)} tries")
+        break
+    if len(guesses) == 1:
+        if abs(guess-y)<11:
+            print("Warm")
+        else:
+            print("Cold")
+    else:
+        if abs(guess - y) < abs(guesses[-2] - y):
+            print("WARMER!")
+        else:
+            print("COLDER")
+            
+        
